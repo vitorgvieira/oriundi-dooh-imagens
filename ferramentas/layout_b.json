@@ -257,7 +257,8 @@
         "topo": 366.35,
         "nota": "DE de 1 digito"
       },
-      "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)"
+      "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)",
+      "nome_topo": 170
     },
     "3_sem_de": {
       "status": "calibrar"
