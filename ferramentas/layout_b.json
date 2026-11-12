@@ -233,7 +233,31 @@
       "nota": "bloco nome+preço centralizado; centavos 12 px à direita do 2_de para a vírgula ter ~32 px de respiro"
     },
     "1_de": {
-      "status": "calibrar"
+      "status": "aprovado",
+      "origem": "Piracanjuba DAHavO73cQU (12/11/2026)",
+      "rs": {
+        "corpo": 107,
+        "x": 880,
+        "topo": 418
+      },
+      "inteiro": {
+        "corpo": 380,
+        "x": 1023,
+        "topo": 392
+      },
+      "centavos": {
+        "corpo": 209,
+        "x": 1266,
+        "topo": 408
+      },
+      "risco": {
+        "w": 226,
+        "h": 8,
+        "x": 979,
+        "topo": 366.35,
+        "nota": "DE de 1 digito"
+      },
+      "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)"
     },
     "3_sem_de": {
       "status": "calibrar"
