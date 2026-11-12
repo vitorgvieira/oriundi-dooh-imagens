@@ -35,12 +35,15 @@ def main():
         sys.exit(2)
 
     nome = dict(L["nome"])
-    nome["topo"] = nome.pop("topo_1_digito") if a.digitos == 1 else nome["topo"]
+    if "nome_topo" in preco:
+        nome["topo"] = preco["nome_topo"]
+    if a.digitos == 1 and "nome_topo" not in preco:
+        nome["topo"] = nome["topo_1_digito"]
     nome.pop("topo_1_digito", None)
     out = {
         "ok": True, "caso": chave, "status_preco": preco["status"],
         "nome": {k: nome[k] for k in ("corpo", "caixa_w", "x", "topo")},
-        "preco": {k: v for k, v in preco.items() if k not in ("status", "origem")},
+        "preco": {k: v for k, v in preco.items() if k not in ("status", "origem", "nome_topo")},
         "validade": {k: L["validade"][k] for k in ("corpo", "caixa_w", "x", "topo")},
         "logo_marca": L["logos"]["marca"] | {"exemplos": None},
         "canto_inferior": (L["logos"]["assinatura_meu_oriundi"] if a.meu_oriundi else L["logos"]["oriundi"]),

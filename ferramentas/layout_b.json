@@ -149,7 +149,8 @@
         "y0": 380,
         "y1": 711,
         "x1": 1690
-      }
+      },
+      "nota": "mestre Downy tem vírgula com ~19 px de respiro (abaixo do mínimo ~32); em cópia nova, centavos em x 1403"
     },
     "3_de": {
       "status": "aprovado",
@@ -206,8 +207,30 @@
       "nota": "nome topo 150; conferir na previa"
     },
     "2_sem_de": {
-      "status": "calibrar",
-      "nota": "partir do 2_de subindo o bloco; calibrar com o Vitor"
+      "status": "aprovado",
+      "origem": "Calibração Downy DAHatDH0mhk (12/11/2026)",
+      "rs": {
+        "corpo": 100.6,
+        "x": 880,
+        "topo": 391.5
+      },
+      "inteiro": {
+        "corpo": 357,
+        "x": 1014,
+        "topo": 367
+      },
+      "centavos": {
+        "corpo": 196,
+        "x": 1403,
+        "topo": 382.3
+      },
+      "visivel": {
+        "y0": 355,
+        "y1": 686,
+        "x1": 1706
+      },
+      "nome_topo": 178,
+      "nota": "bloco nome+preço centralizado; centavos 12 px à direita do 2_de para a vírgula ter ~32 px de respiro"
     },
     "1_de": {
       "status": "calibrar"
