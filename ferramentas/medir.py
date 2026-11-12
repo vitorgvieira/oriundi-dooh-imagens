@@ -122,19 +122,30 @@ def main():
         y0 = vis.get("y0", inteiro["topo"] + 0.12 * inteiro["corpo"])
         y1 = vis.get("y1", inteiro["topo"] + 0.85 * inteiro["corpo"])
         faixa = recorte((arr.min(axis=2) >= 0.78)[..., None], esc, (880, y0, col0, y1))[..., 0]
-        altura = faixa.sum(axis=0)
-        altos = np.where(altura > 0.6 * faixa.shape[0])[0]
-        minimo = L["virgula"]["respiro_min_pct_corpo_inteiro"] * inteiro["corpo"]
-        if altos.size:
-            fim_int = altos.max()
-            depois = np.where(altura[fim_int + 1:] > 0)[0]
-            if depois.size:
-                gap = depois.min() * esc
-                med["virgula_respiro_px"] = int(round(gap))
-                if gap < minimo * 0.85:
-                    falhas.append(f"virgula com respiro de {gap:.0f} px (minimo ~{minimo:.0f})")
+        tem = faixa.sum(axis=0) > 0
+        vazios, i = [], 0
+        while i < tem.size:
+            if not tem[i]:
+                j = i
+                while j < tem.size and not tem[j]:
+                    j += 1
+                if i > 0:
+                    vazios.append((880 + i * esc, 880 + j * esc))
+                i = j
+            else:
+                i += 1
+        c = inteiro["corpo"]
+        # vazio entre o ultimo digito e a virgula: o primeiro que comeca perto do x dos centavos
+        cand = [v for v in vazios if cent["x"] - 0.35 * c <= v[0] <= cent["x"] + 0.15 * c]
+        minimo = L["virgula"]["respiro_min_pct_corpo_inteiro"] * c
+        if cand:
+            v = cand[0]
+            gap = v[1] - v[0]
+            med["virgula_respiro_px"] = int(round(gap))
+            if gap < minimo * 0.85:
+                falhas.append(f"virgula com respiro de {gap:.0f} px (minimo ~{minimo:.0f})")
         else:
-            avisos.append("inteiro do preco nao encontrado na faixa: respiro da virgula nao conferido")
+            falhas.append("virgula encostada no inteiro (sem espaco vazio antes dos centavos)")
     else:
         avisos.append(f"caso {a.caso} sem medida de preco: respiro da virgula nao conferido")
 
