@@ -243,7 +243,7 @@
       "inteiro": {
         "corpo": 380,
         "x": 1023,
-        "topo": 392
+        "topo": 376
       },
       "centavos": {
         "corpo": 209,
@@ -258,7 +258,8 @@
         "nota": "DE de 1 digito"
       },
       "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)",
-      "nome_topo": 170
+      "nome_topo": 170,
+      "nota_alinhamento": "13/11/2026: inteiro subiu 16 px (392->376) para alinhar o topo do inteiro com o topo dos centavos e do R$ (pedido do Vitor, conferido na Bauducco)"
     },
     "3_sem_de": {
       "status": "calibrar"
