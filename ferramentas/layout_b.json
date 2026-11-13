@@ -132,11 +132,11 @@
    "inteiro": {
     "corpo": 357,
     "x": 1014,
-    "topo": 392
+    "topo": 377
    },
    "centavos": {
     "corpo": 196,
-    "x": 1391,
+    "x": 1407,
     "topo": 407.3
    },
    "risco": {
@@ -150,7 +150,8 @@
     "y1": 711,
     "x1": 1690
    },
-   "nota": "mestre Downy tem vírgula com ~19 px de respiro (abaixo do mínimo ~32); em cópia nova, centavos em x 1403"
+   "nota": "centavos em x 1407 (vírgula ~32 px). O mestre Downy ainda tem centavos em x 1391 e inteiro em 392",
+   "nota_alinhamento": "13/11/2026: inteiro subiu 15 px (392->377) para alinhar o topo do inteiro com o topo dos centavos (conferido no template Perdigão DAHavrMe6k0: topo do 1 e do 99 em y 436)"
   },
   "3_de": {
    "status": "aprovado",
