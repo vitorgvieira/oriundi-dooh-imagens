@@ -323,6 +323,29 @@
     "3_leque": {
       "status": "calibrar",
       "nota": "medir a partir do Bold DAHapDn7pjs"
+    },
+    "3_pacotes_cascata_diagonal": {
+      "status": "calibrado em peça salva",
+      "origem": "Bauducco DAHay26mUPU (13/11/2026)",
+      "png_unico": [
+        830,
+        924
+      ],
+      "moldura": {
+        "x": 0,
+        "y": 0,
+        "w": 830,
+        "h": 924
+      },
+      "visivel": {
+        "x0": 13,
+        "y0": 28,
+        "x1": 769,
+        "y1": 862
+      },
+      "composicao": "3 pacotes compridos (flow pack) paralelos em diagonal de 24 graus, cascata de cima para baixo (de tras para a frente), passo ~203 px vertical e ~28 px horizontal, comprimento 700 px cada, heroi na frente (embaixo)",
+      "sombra": "de mesa: projetada (22,30) blur 26 alfa 0.42 cor (45,18,4) + contato (5,7) blur 6 alfa 0.6 cor (30,10,2); luz do canto superior esquerdo",
+      "script": "comp3.py (em /tmp, descrito aqui)"
     }
   },
   "sombra_cor_por_fundo": {
