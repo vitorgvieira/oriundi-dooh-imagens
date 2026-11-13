@@ -39,8 +39,13 @@ def luminancia(rgb):
     return 0.2126 * c[..., 0] + 0.7152 * c[..., 1] + 0.0722 * c[..., 2]
 
 
+TEXTO_LUM = 1.0  # branco por padrao; --texto HEX troca (ex.: marrom sobre amarelo)
+TEXTO_RGB = None
+
+
 def razao(lum):
-    return round(float(1.05 / (lum + 0.05)), 2)
+    a, b = max(lum, TEXTO_LUM), min(lum, TEXTO_LUM)
+    return round(float((a + 0.05) / (b + 0.05)), 2)
 
 
 def recorte(arr, esc, caixa):
@@ -48,8 +53,14 @@ def recorte(arr, esc, caixa):
     return arr[y0:y1, x0:x1]
 
 
+def mascara_texto_cor(arr):
+    if TEXTO_RGB is None:
+        return arr.min(axis=2) >= 0.78
+    return np.abs(arr - TEXTO_RGB).max(axis=2) <= 0.16
+
+
 def mascara_branco(arr, esc):
-    m = arr.min(axis=2) >= 0.78
+    m = mascara_texto_cor(arr)
     return ndimage.binary_dilation(m, iterations=max(1, int(round(3 / esc))))
 
 
@@ -60,7 +71,13 @@ def main():
     p.add_argument("--fundo")
     p.add_argument("--elementos")
     p.add_argument("--leitura")
+    p.add_argument("--texto", help="HEX do texto quando nao for branco (ex.: #4A2016)")
     a = p.parse_args()
+    global TEXTO_LUM, TEXTO_RGB
+    if a.texto:
+        h = a.texto.lstrip("#")
+        TEXTO_RGB = np.array([int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)])
+        TEXTO_LUM = float(luminancia(TEXTO_RGB[None, :])[0])
 
     falhas, avisos, med = [], [], {}
     arr, esc = carregar(a.peca)
@@ -78,7 +95,8 @@ def main():
         if lum.size < 50:
             avisos.append(f"{nome}: poucos pixels de fundo para medir")
             continue
-        r_med, r_claro = razao(np.median(lum)), razao(np.percentile(lum, 90))
+        pior = np.percentile(lum, 90) if TEXTO_LUM >= 0.5 else np.percentile(lum, 10)
+        r_med, r_claro = razao(np.median(lum)), razao(pior)
         med[f"contraste_{nome}"] = {"mediana": r_med, "claros10": r_claro}
         if r_med < meta["mediana_min"]:
             falhas.append(f"contraste {nome}: mediana {r_med}:1 < {meta['mediana_min']}:1")
@@ -102,7 +120,7 @@ def main():
     # 3. texto x coluna de marca: ponta direita do nome e do preco
     lim = L["zonas"]["limite_direito_texto"]
     col0 = L["zonas"]["coluna_marca"]["x0"]
-    base_m = branco if a.fundo is None else (arr.min(axis=2) >= 0.78)
+    base_m = branco if a.fundo is None else mascara_texto_cor(arr)
     for nome, (y0, y1) in {"nome": (185, 400), "preco": (380, 760)}.items():
         faixa = recorte(base_m[..., None], esc, (880, y0, col0, y1))[..., 0]
         cols = np.where(faixa.any(axis=0))[0]
@@ -121,7 +139,7 @@ def main():
         vis = caso.get("visivel", {})
         y0 = vis.get("y0", inteiro["topo"] + 0.12 * inteiro["corpo"])
         y1 = vis.get("y1", inteiro["topo"] + 0.85 * inteiro["corpo"])
-        faixa = recorte((arr.min(axis=2) >= 0.78)[..., None], esc, (880, y0, col0, y1))[..., 0]
+        faixa = recorte(mascara_texto_cor(arr)[..., None], esc, (880, y0, col0, y1))[..., 0]
         tem = faixa.sum(axis=0) > 0
         vazios, i = [], 0
         while i < tem.size:
