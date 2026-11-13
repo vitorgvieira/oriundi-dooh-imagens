@@ -1,357 +1,368 @@
 {
-  "versao": "2026-11-12",
-  "fonte": "Medidas aprovadas do layout B 2156x924. Unica fonte de medidas. Caso com status 'calibrar' nao tem medida: parar e avisar.",
-  "tela": {
-    "w": 2156,
-    "h": 924,
-    "margem_lateral": 80,
-    "margem_vertical": 50
+ "versao": "2026-11-12",
+ "fonte": "Medidas aprovadas do layout B 2156x924. Unica fonte de medidas. Caso com status 'calibrar' nao tem medida: parar e avisar.",
+ "tela": {
+  "w": 2156,
+  "h": 924,
+  "margem_lateral": 80,
+  "margem_vertical": 50
+ },
+ "zonas": {
+  "produto": {
+   "x0": 90,
+   "x1": 800,
+   "fim_visivel_max": 770,
+   "nota": "~110 px entre a borda visivel do produto e o R$; embalagem larga: reduzir o grupo, nao empurrar o texto"
   },
-  "zonas": {
-    "produto": {
-      "x0": 90,
-      "x1": 800,
-      "fim_visivel_max": 770,
-      "nota": "~110 px entre a borda visivel do produto e o R$; embalagem larga: reduzir o grupo, nao empurrar o texto"
-    },
-    "eixo_texto": 880,
-    "coluna_marca": {
-      "x0": 1740,
-      "x1": 2076
-    },
-    "limite_direito_texto": 1725,
-    "aviso_nome_longo_x": 1500,
-    "nota_limite": "1725 calibrado no mestre Downy aprovado (nome termina em ~1719 na miniatura)"
+  "eixo_texto": 880,
+  "coluna_marca": {
+   "x0": 1740,
+   "x1": 2076
   },
-  "zonas_prompt_pct": {
-    "produto": "4-37% largura x 14-82% altura (luz e cor aqui)",
-    "texto": "40-80% largura, topo a base (tom profundo uniforme, sem brilho nem elementos)",
-    "logo_marca": "81-97% largura x 4-20% altura (cor lisa, nada)",
-    "logo_oriundi": "81-97% largura x 70-96% altura (cor lisa, nada)",
-    "detalhes": "borda e cantos esquerdos, faixa estreita desfocada no topo, meio da borda direita 30-62% altura"
-  },
-  "ids_padrao": {
-    "fundo": "LB22pW4syQl2XpCk",
-    "nome": "LBBPGZG4ttgzbVcp",
-    "rs": "LBKcGqkZN1R7cYkH",
-    "inteiro": "LBnCXFRtbf3L8PNr",
-    "centavos": "LB63NqZHwJQD1WxB",
-    "risco": "LBVQCLhKW2ss1T4v",
-    "validade": "LBp8k864b9SjxpKd",
-    "logo_marca": "LB1cqhxV4kMzKcgX",
-    "oriundi": "LBHZ23Yj4VhlnjGZ",
-    "nota": "IDs se mantem nas copias do base Downy; confira no read-design se a base for outra"
-  },
-  "fundo": {
-    "aspect": "LANDSCAPE_2_1",
-    "crop_media": {
-      "w": 2156,
-      "h": 1088,
-      "top": -82,
-      "left": 0
-    }
-  },
-  "nome": {
-    "fonte": "NOW",
-    "corpo": 50.3,
-    "caixa_w": 950,
-    "x": 880,
-    "topo": 170,
-    "topo_1_digito": 150,
-    "linhas_max": 2,
-    "formato_de": "LINHA 1\\nLINHA 2\\n\\nDE R$ XX,XX",
-    "regra": "produto + embalagem / gramatura; texto exatamente como informado"
-  },
-  "validade": {
-    "corpo": 38.6,
-    "alinhamento": "direita",
-    "caixa_w": 434.5,
-    "x": 1205.5,
-    "topo": 826,
-    "fim_x": 1640,
-    "meu_oriundi": "2 linhas com 'Exclusivo para clientes Meu Oriundi': ja posicionada nas bases DAHapy2YUHM e DAHapDn7pjs"
-  },
-  "logos": {
-    "marca": {
-      "centro_x": 1908,
-      "topo": 55,
-      "w_max": 290,
-      "h_max": 168,
-      "exemplos": {
-        "downy": [
-          1813,
-          55,
-          190,
-          121.8
-        ],
-        "oralb": [
-          1763,
-          55,
-          290,
-          97.4
-        ],
-        "caffeinearmy": [
-          1793,
-          52,
-          230,
-          167.6
-        ]
-      }
-    },
-    "oriundi": {
-      "x": 1795,
-      "y": 807,
-      "w": 226.4,
-      "h": 67.2
-    },
-    "assinatura_meu_oriundi": {
-      "x": 1778,
-      "y": 668,
-      "w": 260,
-      "h": 206,
-      "midia": "MAHapOtUYXs",
-      "substitui": "oriundi"
-    }
-  },
-  "virgula": {
-    "respiro_min_pct_corpo_inteiro": 0.09
-  },
-  "contraste": {
-    "mediana_min": 7.0,
-    "claros10_min": 4.5
-  },
-  "preco": {
-    "2_de": {
-      "status": "aprovado",
-      "origem": "Downy DAHaozv9lTU",
-      "rs": {
-        "corpo": 100.6,
-        "x": 880,
-        "topo": 416.5
-      },
-      "inteiro": {
-        "corpo": 357,
-        "x": 1014,
-        "topo": 392
-      },
-      "centavos": {
-        "corpo": 196,
-        "x": 1391,
-        "topo": 407.3
-      },
-      "risco": {
-        "w": 251.6,
-        "h": 6.7,
-        "x": 979,
-        "topo": 367
-      },
-      "visivel": {
-        "y0": 380,
-        "y1": 711,
-        "x1": 1690
-      },
-      "nota": "mestre Downy tem vírgula com ~19 px de respiro (abaixo do mínimo ~32); em cópia nova, centavos em x 1403"
-    },
-    "3_de": {
-      "status": "aprovado",
-      "origem": "Caffeine Army DAHapy2YUHM",
-      "rs": {
-        "corpo": 88,
-        "x": 880,
-        "topo": 440
-      },
-      "inteiro": {
-        "corpo": 315,
-        "x": 979,
-        "topo": 409,
-        "caixa_w": 560
-      },
-      "centavos": {
-        "corpo": 173,
-        "x": 1443,
-        "topo": 433
-      },
-      "risco": {
-        "w": 277,
-        "h": 6.7,
-        "x": 979,
-        "topo": 366.35,
-        "nota": "DE de 3 digitos"
-      },
-      "visivel": {
-        "y0": 453,
-        "y1": 690,
-        "x0": 888,
-        "x1": 1703
-      },
-      "nota": "limite antes da coluna de marca; crescer so para baixo"
-    },
-    "1_sem_de": {
-      "status": "medido_conferir",
-      "origem": "Lacta (sem mestre no Catalogo)",
-      "rs": {
-        "corpo": 112,
-        "x": 880,
-        "topo": 387
-      },
-      "inteiro": {
-        "corpo": 440,
-        "x": 1000,
-        "topo": 330
-      },
-      "centavos": {
-        "corpo": 242,
-        "x": 1307,
-        "topo": 365
-      },
-      "nota": "nome topo 150; conferir na previa"
-    },
-    "2_sem_de": {
-      "status": "aprovado",
-      "origem": "Calibração Downy DAHatDH0mhk (12/11/2026)",
-      "rs": {
-        "corpo": 100.6,
-        "x": 880,
-        "topo": 391.5
-      },
-      "inteiro": {
-        "corpo": 357,
-        "x": 1014,
-        "topo": 367
-      },
-      "centavos": {
-        "corpo": 196,
-        "x": 1403,
-        "topo": 382.3
-      },
-      "visivel": {
-        "y0": 355,
-        "y1": 686,
-        "x1": 1706
-      },
-      "nome_topo": 178,
-      "nota": "bloco nome+preço centralizado; centavos 12 px à direita do 2_de para a vírgula ter ~32 px de respiro"
-    },
-    "1_de": {
-      "status": "aprovado",
-      "origem": "Piracanjuba DAHavO73cQU (12/11/2026)",
-      "rs": {
-        "corpo": 107,
-        "x": 880,
-        "topo": 418
-      },
-      "inteiro": {
-        "corpo": 380,
-        "x": 1023,
-        "topo": 376
-      },
-      "centavos": {
-        "corpo": 209,
-        "x": 1266,
-        "topo": 408
-      },
-      "risco": {
-        "w": 226,
-        "h": 8,
-        "x": 979,
-        "topo": 366.35,
-        "nota": "DE de 1 digito"
-      },
-      "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)",
-      "nome_topo": 170,
-      "nota_alinhamento": "13/11/2026: inteiro subiu 16 px (392->376) para alinhar o topo do inteiro com o topo dos centavos e do R$ (pedido do Vitor, conferido na Bauducco)"
-    },
-    "3_sem_de": {
-      "status": "calibrar"
-    }
-  },
-  "risco_shape": {
-    "caixa_h": 8,
-    "path": "M0 37 H100 V63 H0 Z",
-    "cor": "#FFFFFF",
-    "regra": "cobre so 'R$ XX,XX', nunca o DE; medir na miniatura"
-  },
-  "produtos": {
-    "1_caixa": {
-      "status": "aprovado",
-      "origem": "Oral-B DAHaqKKA4OQ",
-      "moldura": {
-        "w": 708.2,
-        "h": 607.6,
-        "x": 90.9,
-        "y": 159.4
-      }
-    },
-    "2_frascos_leque": {
-      "status": "aprovado",
-      "origem": "Downy DAHaozv9lTU",
-      "heroi": {
-        "w": 375.6,
-        "h": 842,
-        "x": 363.2,
-        "y": 42,
-        "crop": {
-          "w": 375.6,
-          "h": 844.2,
-          "top": -1.1
-        }
-      },
-      "tras": {
-        "w": 350.7,
-        "h": 784,
-        "x_caixa_girada": 121.8,
-        "y_caixa_girada": 64.4,
-        "rot": -8,
-        "crop": {
-          "w": 350.7,
-          "h": 785.9,
-          "top": -1
-        }
-      }
-    },
-    "2_latas_leque_png_unico": {
-      "status": "aprovado",
-      "origem": "Caffeine Army DAHapy2YUHM",
-      "moldura": {
-        "w": 830,
-        "h": 924,
-        "x": 0,
-        "y": 0
-      },
-      "nota": "PNG 830x924 com as 2 sombras; tras a esquerda girado ~6 graus, heroi cobre no max metade"
-    },
-    "3_leque": {
-      "status": "calibrar",
-      "nota": "medir a partir do Bold DAHapDn7pjs"
-    },
-    "3_pacotes_cascata_diagonal": {
-      "status": "calibrado em peça salva",
-      "origem": "Bauducco DAHay26mUPU (13/11/2026)",
-      "png_unico": [
-        830,
-        924
-      ],
-      "moldura": {
-        "x": 0,
-        "y": 0,
-        "w": 830,
-        "h": 924
-      },
-      "visivel": {
-        "x0": 13,
-        "y0": 28,
-        "x1": 769,
-        "y1": 862
-      },
-      "composicao": "3 pacotes compridos (flow pack) paralelos em diagonal de 24 graus, cascata de cima para baixo (de tras para a frente), passo ~203 px vertical e ~28 px horizontal, comprimento 700 px cada, heroi na frente (embaixo)",
-      "sombra": "de mesa: projetada (22,30) blur 26 alfa 0.42 cor (45,18,4) + contato (5,7) blur 6 alfa 0.6 cor (30,10,2); luz do canto superior esquerdo",
-      "script": "comp3.py (em /tmp, descrito aqui)"
-    }
-  },
-  "sombra_cor_por_fundo": {
-    "azul": "#06122E",
-    "vermelho": "#2A0508",
-    "marrom": "#1A0D0A",
-    "violeta": "#120A33"
+  "limite_direito_texto": 1725,
+  "aviso_nome_longo_x": 1500,
+  "nota_limite": "1725 calibrado no mestre Downy aprovado (nome termina em ~1719 na miniatura)"
+ },
+ "zonas_prompt_pct": {
+  "produto": "4-37% largura x 14-82% altura (luz e cor aqui)",
+  "texto": "40-80% largura, topo a base (tom profundo uniforme, sem brilho nem elementos)",
+  "logo_marca": "81-97% largura x 4-20% altura (cor lisa, nada)",
+  "logo_oriundi": "81-97% largura x 70-96% altura (cor lisa, nada)",
+  "detalhes": "borda e cantos esquerdos, faixa estreita desfocada no topo, meio da borda direita 30-62% altura"
+ },
+ "ids_padrao": {
+  "fundo": "LB22pW4syQl2XpCk",
+  "nome": "LBBPGZG4ttgzbVcp",
+  "rs": "LBKcGqkZN1R7cYkH",
+  "inteiro": "LBnCXFRtbf3L8PNr",
+  "centavos": "LB63NqZHwJQD1WxB",
+  "risco": "LBVQCLhKW2ss1T4v",
+  "validade": "LBp8k864b9SjxpKd",
+  "logo_marca": "LB1cqhxV4kMzKcgX",
+  "oriundi": "LBHZ23Yj4VhlnjGZ",
+  "nota": "IDs se mantem nas copias do base Downy; confira no read-design se a base for outra"
+ },
+ "fundo": {
+  "aspect": "LANDSCAPE_2_1",
+  "crop_media": {
+   "w": 2156,
+   "h": 1088,
+   "top": -82,
+   "left": 0
   }
+ },
+ "nome": {
+  "fonte": "NOW",
+  "corpo": 50.3,
+  "caixa_w": 950,
+  "x": 880,
+  "topo": 170,
+  "topo_1_digito": 150,
+  "linhas_max": 2,
+  "formato_de": "LINHA 1\\nLINHA 2\\n\\nDE R$ XX,XX",
+  "regra": "produto + embalagem / gramatura; texto exatamente como informado"
+ },
+ "validade": {
+  "corpo": 38.6,
+  "alinhamento": "direita",
+  "caixa_w": 434.5,
+  "x": 1205.5,
+  "topo": 826,
+  "fim_x": 1640,
+  "meu_oriundi": "2 linhas com 'Exclusivo para clientes Meu Oriundi': ja posicionada nas bases DAHapy2YUHM e DAHapDn7pjs"
+ },
+ "logos": {
+  "marca": {
+   "centro_x": 1908,
+   "topo": 55,
+   "w_max": 290,
+   "h_max": 168,
+   "exemplos": {
+    "downy": [
+     1813,
+     55,
+     190,
+     121.8
+    ],
+    "oralb": [
+     1763,
+     55,
+     290,
+     97.4
+    ],
+    "caffeinearmy": [
+     1793,
+     52,
+     230,
+     167.6
+    ]
+   }
+  },
+  "oriundi": {
+   "x": 1795,
+   "y": 807,
+   "w": 226.4,
+   "h": 67.2
+  },
+  "assinatura_meu_oriundi": {
+   "x": 1778,
+   "y": 668,
+   "w": 260,
+   "h": 206,
+   "midia": "MAHapOtUYXs",
+   "substitui": "oriundi"
+  }
+ },
+ "virgula": {
+  "respiro_min_pct_corpo_inteiro": 0.09
+ },
+ "contraste": {
+  "mediana_min": 7.0,
+  "claros10_min": 4.5
+ },
+ "preco": {
+  "2_de": {
+   "status": "aprovado",
+   "origem": "Downy DAHaozv9lTU",
+   "rs": {
+    "corpo": 100.6,
+    "x": 880,
+    "topo": 416.5
+   },
+   "inteiro": {
+    "corpo": 357,
+    "x": 1014,
+    "topo": 392
+   },
+   "centavos": {
+    "corpo": 196,
+    "x": 1391,
+    "topo": 407.3
+   },
+   "risco": {
+    "w": 251.6,
+    "h": 6.7,
+    "x": 979,
+    "topo": 367
+   },
+   "visivel": {
+    "y0": 380,
+    "y1": 711,
+    "x1": 1690
+   },
+   "nota": "mestre Downy tem vírgula com ~19 px de respiro (abaixo do mínimo ~32); em cópia nova, centavos em x 1403"
+  },
+  "3_de": {
+   "status": "aprovado",
+   "origem": "Caffeine Army DAHapy2YUHM",
+   "rs": {
+    "corpo": 88,
+    "x": 880,
+    "topo": 440
+   },
+   "inteiro": {
+    "corpo": 315,
+    "x": 979,
+    "topo": 409,
+    "caixa_w": 560
+   },
+   "centavos": {
+    "corpo": 173,
+    "x": 1443,
+    "topo": 433
+   },
+   "risco": {
+    "w": 277,
+    "h": 6.7,
+    "x": 979,
+    "topo": 366.35,
+    "nota": "DE de 3 digitos"
+   },
+   "visivel": {
+    "y0": 453,
+    "y1": 690,
+    "x0": 888,
+    "x1": 1703
+   },
+   "nota": "limite antes da coluna de marca; crescer so para baixo"
+  },
+  "1_sem_de": {
+   "status": "medido_conferir",
+   "origem": "Lacta (sem mestre no Catalogo)",
+   "rs": {
+    "corpo": 112,
+    "x": 880,
+    "topo": 387
+   },
+   "inteiro": {
+    "corpo": 440,
+    "x": 1000,
+    "topo": 330
+   },
+   "centavos": {
+    "corpo": 242,
+    "x": 1307,
+    "topo": 365
+   },
+   "nota": "nome topo 150; conferir na previa"
+  },
+  "2_sem_de": {
+   "status": "aprovado",
+   "origem": "Calibração Downy DAHatDH0mhk (12/11/2026)",
+   "rs": {
+    "corpo": 100.6,
+    "x": 880,
+    "topo": 391.5
+   },
+   "inteiro": {
+    "corpo": 357,
+    "x": 1014,
+    "topo": 367
+   },
+   "centavos": {
+    "corpo": 196,
+    "x": 1403,
+    "topo": 382.3
+   },
+   "visivel": {
+    "y0": 355,
+    "y1": 686,
+    "x1": 1706
+   },
+   "nome_topo": 178,
+   "nota": "bloco nome+preço centralizado; centavos 12 px à direita do 2_de para a vírgula ter ~32 px de respiro"
+  },
+  "1_de": {
+   "status": "aprovado",
+   "origem": "Piracanjuba DAHavO73cQU (12/11/2026)",
+   "rs": {
+    "corpo": 107,
+    "x": 880,
+    "topo": 418
+   },
+   "inteiro": {
+    "corpo": 380,
+    "x": 1023,
+    "topo": 376
+   },
+   "centavos": {
+    "corpo": 209,
+    "x": 1266,
+    "topo": 408
+   },
+   "risco": {
+    "w": 226,
+    "h": 8,
+    "x": 979,
+    "topo": 366.35,
+    "nota": "DE de 1 digito"
+   },
+   "nota": "nome em 2 linhas, topo 170. Com 3 linhas o preco cai para ~305 e fica pequeno: encurtar o nome (regra de 12/11/2026)",
+   "nome_topo": 170,
+   "nota_alinhamento": "13/11/2026: inteiro subiu 16 px (392->376) para alinhar o topo do inteiro com o topo dos centavos e do R$ (pedido do Vitor, conferido na Bauducco)"
+  },
+  "3_sem_de": {
+   "status": "calibrar"
+  }
+ },
+ "risco_shape": {
+  "caixa_h": 8,
+  "path": "M0 37 H100 V63 H0 Z",
+  "cor": "#FFFFFF",
+  "regra": "cobre so 'R$ XX,XX', nunca o DE; medir na miniatura"
+ },
+ "produtos": {
+  "1_caixa": {
+   "status": "aprovado",
+   "origem": "Oral-B DAHaqKKA4OQ",
+   "moldura": {
+    "w": 708.2,
+    "h": 607.6,
+    "x": 90.9,
+    "y": 159.4
+   }
+  },
+  "2_frascos_leque": {
+   "status": "aprovado",
+   "origem": "Downy DAHaozv9lTU",
+   "heroi": {
+    "w": 375.6,
+    "h": 842,
+    "x": 363.2,
+    "y": 42,
+    "crop": {
+     "w": 375.6,
+     "h": 844.2,
+     "top": -1.1
+    }
+   },
+   "tras": {
+    "w": 350.7,
+    "h": 784,
+    "x_caixa_girada": 121.8,
+    "y_caixa_girada": 64.4,
+    "rot": -8,
+    "crop": {
+     "w": 350.7,
+     "h": 785.9,
+     "top": -1
+    }
+   }
+  },
+  "2_latas_leque_png_unico": {
+   "status": "aprovado",
+   "origem": "Caffeine Army DAHapy2YUHM",
+   "moldura": {
+    "w": 830,
+    "h": 924,
+    "x": 0,
+    "y": 0
+   },
+   "nota": "PNG 830x924 com as 2 sombras; tras a esquerda girado ~6 graus, heroi cobre no max metade"
+  },
+  "3_leque": {
+   "status": "calibrar",
+   "nota": "medir a partir do Bold DAHapDn7pjs"
+  },
+  "3_pacotes_cascata_diagonal": {
+   "status": "calibrado em peça salva",
+   "origem": "Bauducco DAHay26mUPU (13/11/2026)",
+   "png_unico": [
+    830,
+    924
+   ],
+   "moldura": {
+    "x": 0,
+    "y": 0,
+    "w": 830,
+    "h": 924
+   },
+   "visivel": {
+    "x0": 13,
+    "y0": 28,
+    "x1": 769,
+    "y1": 862
+   },
+   "composicao": "3 pacotes compridos (flow pack) paralelos em diagonal de 24 graus, cascata de cima para baixo (de tras para a frente), passo ~203 px vertical e ~28 px horizontal, comprimento 700 px cada, heroi na frente (embaixo)",
+   "sombra": "de mesa: projetada (22,30) blur 26 alfa 0.42 cor (45,18,4) + contato (5,7) blur 6 alfa 0.6 cor (30,10,2); luz do canto superior esquerdo",
+   "script": "comp3.py (em /tmp, descrito aqui)"
+  },
+  "2_bandejas_leque_png_unico": {
+   "status": "aprovado",
+   "origem": "Perdigão DAHavrMe6k0",
+   "moldura": {
+    "w": 830,
+    "h": 924,
+    "x": 0,
+    "y": 0
+   },
+   "nota": "PNG 830x924 com as 2 sombras; embalagens quadradas ~455 px de largura, tras em cima a esquerda girada 5 graus, heroi deslocado 36% para a direita e 70% para baixo para o nome da variante de tras continuar legivel; produto visivel termina em x 724"
+  }
+ },
+ "sombra_cor_por_fundo": {
+  "azul": "#06122E",
+  "vermelho": "#2A0508",
+  "marrom": "#1A0D0A",
+  "violeta": "#120A33"
+ }
 }
