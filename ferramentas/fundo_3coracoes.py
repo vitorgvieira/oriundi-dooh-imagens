@@ -87,9 +87,8 @@ def svg():
     e.append(f'<g clip-path="url(#cCor)"><rect width="{W}" height="{H}" fill="url(#gLuz)"/></g>')
     e.append(f'<path d="{heart}" fill="none" stroke="{LARANJA}" stroke-width="14" stroke-linejoin="round"/>')
     # grãos: cantos esquerdos, grandes, sangrando pelas bordas
-    e.append(grao(96, 22, 240, -28))
+    e.append(grao(40, 6, 210, -28))
     e.append(grao(-6, 575, 200, 35))
-    e.append(grao(800, 18, 110, 20))
     # meio da borda direita (entre as logos, y 303–588)
     e.append(grao(2120, 400, 280, 32))
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">' + "".join(e) + "</svg>"
