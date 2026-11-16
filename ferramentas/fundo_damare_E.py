@@ -39,7 +39,7 @@ def fundo():
     e.append(icone("caracol", 520, 8, 105, -8, CIANO))
     e.append(icone("circulo", 700, 40, 46, 0, VERDE))
     # acento da direita: um grande sangrando + um pequeno, com respiro
-    e.append(icone("coracao", 2040, 285, 250, 18, CIANO))
+    e.append(icone("coracao", 1950, 285, 250, 18, CIANO))
     e.append(icone("gota", 1800, 320, 140, -24, LARANJA))
     e.append(icone("circulo", 1880, 505, 48, 0, VERDE))
     return e
