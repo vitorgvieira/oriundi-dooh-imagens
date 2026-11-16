@@ -65,6 +65,12 @@ def pincel(p0, p1, p2, p3, larg, cor, ponta=0.15):
             f'<circle cx="{p3[0]}" cy="{p3[1]}" r="{larg / 2:.1f}" fill="{cor}"/>')
 
 
+FUNDO = ('<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="0">'
+         '<stop offset="0" stop-color="#0659B2"/><stop offset="0.3" stop-color="#024A9A"/>'
+         '<stop offset="0.42" stop-color="#01366F"/><stop offset="1" stop-color="#01336A"/></linearGradient></defs>'
+         f'<rect width="{W}" height="{H}" fill="url(#gr)"/>')
+
+
 def borda_comum():
     """rabiscos nas bordas permitidas: topo e base 0-37%, borda esquerda, meio da borda direita"""
     e = []
@@ -86,15 +92,15 @@ def borda_comum():
     e.append(g(CORACAO, 2128, 420, 1.35, 18, LARANJA, 17))
     e.append(g(argola(24), 1860, 330, 1, 0, VERDE))
     e.append(g(espiral(1.8, 46), 1960, 515, 1, 0, CIANO))
-    e.append(ponto(1800, 450, 9, AMARELO)); e.append(ponto(2010, 300, 8, CIANO)); e.append(ponto(1880, 545, 7, VERDE))
+    e.append(ponto(1800, 450, 9, VERDE)); e.append(ponto(2010, 300, 8, CIANO)); e.append(ponto(1880, 545, 7, VERDE))
     return e
 
 
 def opcao_a():
-    e = [f'<rect width="{W}" height="{H}" fill="{AZUL}"/>']
+    e = [FUNDO]
     # onda dupla grande atrás do produto (verde em cima, ciano embaixo), termina antes do texto
-    e.append(pincel((-60, 700), (180, 300), (500, 170), (770, 205), 46, VERDE))
-    e.append(pincel((-60, 820), (220, 420), (540, 300), (790, 335), 70, CIANO))
+    e.append(pincel((-60, 700), (180, 300), (420, 200), (640, 250), 46, VERDE))
+    e.append(pincel((-60, 820), (220, 420), (460, 330), (680, 380), 70, CIANO))
     # pincelada amarela de apoio sob o queijo
     e.append(pincel((70, 770), (260, 735), (520, 735), (720, 760), 46, AMARELO, 0.3))
     e += borda_comum()
@@ -102,12 +108,13 @@ def opcao_a():
 
 
 def opcao_b():
-    e = [f'<rect width="{W}" height="{H}" fill="{AZUL}"/>']
+    e = [FUNDO]
     # "prato" azul-claro atrás do produto, com aro verde
     e.append(f'<circle cx="445" cy="470" r="345" fill="{CIANO}"/>')
     e.append(f'<circle cx="445" cy="470" r="300" fill="#5DBBEA"/>')
     e.append(f'<path d="M150 260 A360 360 0 0 1 700 190" fill="none" stroke="{VERDE}" stroke-width="16" stroke-linecap="round"/>')
-    e.append(f'<path d="M790 560 A372 372 0 0 1 560 812" fill="none" stroke="{LARANJA}" stroke-width="14" stroke-linecap="round"/>')
+    e.append(f'<path d="M800 520 A372 372 0 0 1 520 830" fill="none" stroke="{VERDE}" stroke-width="16" stroke-linecap="round"/>')
+    e.append(f'<path d="M776 500 A348 348 0 0 1 500 800" fill="none" stroke="{CIANO}" stroke-width="16" stroke-linecap="round"/>')
     e += borda_comum()
     return e
 
