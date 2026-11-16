@@ -462,6 +462,27 @@
      "inteiro": 1011.3,
      "centavos": 1445.6,
      "fim_visivel": 1683
+    },
+    "3_digitos_largos_136": {
+     "corpos": {
+      "inteiro": 394,
+      "centavos": 217,
+      "rs": 100
+     },
+     "rs": [
+      880.6,
+      425.1
+     ],
+     "inteiro": [
+      1004.2,
+      339.0
+     ],
+     "centavos": [
+      1469.9,
+      390.8
+     ],
+     "fim_visivel": 1685,
+     "origem": "Jack Daniel's V02 DAHbF32iNq0 (16/11/2026)"
     }
    },
    "risco": {
@@ -477,7 +498,8 @@
     "fim_x": 1640
    },
    "excecao_bold": "nome em top 156 e eixo 910 (ajuste do Vitor): T 435.5, R$ x 910.1 top 403.6, inteiro x 1041.2 top 310.1, centavos x 1246.9 top 366.7",
-   "nota": "3 digitos (119,99) cabe com folga de 42 px ate 1725; precos maiores: recalcular e, se passar de 1690, reduzir o corpo"
+   "nota": "3 digitos (119,99) cabe com folga de 42 px ate 1725; precos maiores: recalcular e, se passar de 1690, reduzir o corpo",
+   "regra_largura": "se o fim visivel passar de 1690 com 428, reduzir o inteiro de 1 em 1 (centavos 0,55 e R$ 0,255 do inteiro) ate caber; T recentralizado entre DE+50 e validade-42"
   }
  }
 }
