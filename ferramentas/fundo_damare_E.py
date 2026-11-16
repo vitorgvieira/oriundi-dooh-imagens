@@ -27,21 +27,21 @@ def fundo():
         f'<rect width="{W}" height="{H}" fill="url(#luz)"/>',
     ]
     # supergráfico: a onda oficial da logo sobre o pacote, como o arco sobre a palavra Damare
-    e.append(onda(40, 52, 760))
+    e.append(onda(140, 110, 640))
     # apoio amarelo sob o queijo
-    e.append(pincel((230, 750), (380, 724), (560, 724), (705, 744), 38, AMARELO, 0.3))
+    e.append(pincel((285, 748), (380, 728), (510, 728), (610, 742), 36, AMARELO, 0.3))
     # cantos esquerdos: poucos, grandes, sangrando
     e.append(icone("coracao", -62, -58, 250, -16, LARANJA))
-    e.append(icone("brigadeiro", -58, 400, 170, 14, VERDE))        # passa por trás do pacote
-    e.append(icone("chapeu", -40, 708, 250, -10, BRANCO))
+    e.append(icone("brigadeiro", -58, 400, 170, 14, CIANO))        # passa por trás do pacote
+    e.append(icone("chapeu", -40, 708, 250, -10, VERDE))
     e.append(icone("copo", 360, 800, 170, 14, CIANO))              # sangra pela base
     e.append(icone("coracao", 640, 812, 120, 16, LARANJA))
-    e.append(g(argola(15), 560, 30, 1, 0, CIANO))
-    e.append(ponto(600, 120, 9, LARANJA))
+    e.append(icone("caracol", 520, 8, 105, -8, CIANO))
+    e.append(icone("circulo", 700, 40, 46, 0, VERDE))
     # acento da direita: um grande sangrando + um pequeno, com respiro
     e.append(icone("coracao", 2040, 285, 250, 18, CIANO))
     e.append(icone("gota", 1800, 320, 140, -24, LARANJA))
-    e.append(g(argola(14), 1905, 520, 1, 0, VERDE))
+    e.append(icone("circulo", 1880, 505, 48, 0, VERDE))
     return e
 
 
