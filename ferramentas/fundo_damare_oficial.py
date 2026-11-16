@@ -21,30 +21,25 @@ def icone(nome, x, y, h, rot, cor):
 
 def fundo():
     e = [f'<rect width="{W}" height="{H}" fill="{AZUL}"/>']
-    # onda dupla da logo atrás do produto (termina antes do texto)
-    e.append(pincel((-40, 640), (160, 330), (420, 210), (650, 235), 40, VERDE))
-    e.append(pincel((-40, 760), (200, 430), (460, 320), (700, 345), 62, CIANO))
+    # onda dupla da logo, faixa contínua por trás do topo do pacote (termina antes do texto)
+    e.append(pincel((-60, 600), (180, 300), (450, 190), (720, 200), 54, VERDE))
+    e.append(pincel((-60, 730), (220, 400), (460, 300), (690, 320), 84, CIANO))
     # pincelada amarela de apoio sob o queijo
-    e.append(pincel((215, 752), (360, 726), (540, 726), (690, 746), 40, AMARELO, 0.3))
-    # topo esquerdo
-    e.append(icone("coracao", 28, 22, 150, -14, LARANJA))
-    e.append(icone("espatula", 230, 8, 150, 8, VERDE))
-    e.append(icone("bolo", 450, 36, 105, -6, CIANO))
-    e.append(icone("gota", 700, 14, 130, 28, LARANJA))
-    e.append(ponto(395, 60, 9, AMARELO)); e.append(ponto(650, 150, 8, VERDE))
+    e.append(pincel((260, 752), (400, 726), (560, 726), (700, 746), 40, AMARELO, 0.3))
+    # topo esquerdo: um grande + dois médios
+    e.append(icone("coracao", 18, 6, 215, -14, LARANJA))
+    e.append(icone("espatula", 300, 4, 165, 8, VERDE))
+    e.append(icone("gota", 640, 6, 150, 28, LARANJA))
     # borda esquerda
-    e.append(icone("brigadeiro", -40, 360, 140, 12, CIANO))
-    # base esquerda
-    e.append(icone("chapeu", 14, 732, 165, -8, VERDE))
-    e.append(icone("copo", 290, 778, 130, 12, CIANO))
-    e.append(icone("gota", 505, 790, 110, -32, AMARELO))
-    e.append(icone("coracao", 690, 790, 100, 14, LARANJA))
-    e.append(g(argola(16), 445, 900, 1, 0, VERDE))
+    e.append(icone("brigadeiro", -50, 380, 155, 12, CIANO))
+    # base esquerda: chapéu grande + copo + coração pequeno
+    e.append(icone("chapeu", 4, 690, 225, -8, VERDE))
+    e.append(icone("copo", 330, 772, 145, 12, CIANO))
+    e.append(icone("coracao", 650, 790, 115, 14, LARANJA))
     # meio da borda direita (y 265-567, x > 1760)
-    e.append(icone("coracao", 2050, 290, 170, 16, LARANJA))
-    e.append(icone("brigadeiro", 1790, 300, 115, -10, VERDE))
-    e.append(icone("copo", 1860, 440, 110, -14, CIANO))
-    e.append(ponto(2000, 520, 9, VERDE)); e.append(g(argola(14), 1985, 285, 1, 0, CIANO))
+    e.append(icone("coracao", 2020, 300, 210, 16, LARANJA))
+    e.append(icone("brigadeiro", 1785, 300, 130, -10, VERDE))
+    e.append(icone("copo", 1860, 430, 125, -14, CIANO))
     return e
 
 
