@@ -365,5 +365,70 @@
   "vermelho": "#2A0508",
   "marrom": "#1A0D0A",
   "violeta": "#120A33"
+ },
+ "preco_barlow": {
+  "fonte": "Barlow Condensed negrito (R$, inteiro, centavos e linha DE). Oficial desde 16/11/2026. Os casos de 'preco' (NOW) valem so para templates antigos.",
+  "proporcoes": {
+   "centavos_pct_inteiro": 0.55,
+   "rs_pct_inteiro": 0.255,
+   "virgula_respiro_min_pct_inteiro": 0.09
+  },
+  "2_de": {
+   "status": "aprovado",
+   "origem": "Mimmo DAHbFl4-FJs (V02_BARLOW, 16/11/2026)",
+   "nome": {
+    "x": 880,
+    "topo": 170
+   },
+   "linha_de": {
+    "corpo": 55.6,
+    "x": 880,
+    "topo": 318.7,
+    "letter_spacing": 0.1
+   },
+   "risco": {
+    "w": 220,
+    "h": 8,
+    "x": 952,
+    "topo": 352
+   },
+   "rs": {
+    "corpo": 112,
+    "x": 880,
+    "topo": 405.6
+   },
+   "inteiro": {
+    "corpo": 440,
+    "x": 1009,
+    "topo": 299.3,
+    "caixa_w": 700
+   },
+   "centavos": {
+    "corpo": 242,
+    "x": 1345.3,
+    "topo": 356.1,
+    "caixa_w": 450
+   },
+   "validade_meu_oriundi": {
+    "x": 880,
+    "topo": 778,
+    "caixa_w": 760,
+    "fim_x": 1640
+   },
+   "visivel": {
+    "topo_numeros": 428,
+    "y1": 742,
+    "x1": 1584,
+    "virgula_respiro_px": 47
+   },
+   "nota": "medido na miniatura (~3,6 px de erro). Topo do R$, do 1 e do 79 em y ~428. Folga DE->preco ~50 px, preco->validade ~42 px"
+  },
+  "calibrar": [
+   "1_de",
+   "1_sem_de",
+   "2_sem_de",
+   "3_de",
+   "3_sem_de"
+  ]
  }
 }
