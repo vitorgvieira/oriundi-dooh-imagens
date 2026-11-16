@@ -374,7 +374,7 @@
    "virgula_respiro_min_pct_inteiro": 0.09
   },
   "2_de": {
-   "status": "aprovado",
+   "status": "substituido pelo padrao (Mimmo V02 usa inteiro 440)",
    "origem": "Mimmo DAHbFl4-FJs (V02_BARLOW, 16/11/2026)",
    "nome": {
     "x": 880,
@@ -424,11 +424,60 @@
    "nota": "medido na miniatura (~3,6 px de erro). Topo do R$, do 1 e do 79 em y ~428. Folga DE->preco ~50 px, preco->validade ~42 px"
   },
   "calibrar": [
-   "1_de",
-   "1_sem_de",
-   "2_sem_de",
-   "3_de",
-   "3_sem_de"
-  ]
+   "sem DE (1, 2 e 3 digitos): conferir posicao vertical sem a linha DE"
+  ],
+  "cor": {
+   "padrao": "#FFD200",
+   "regra": "amarelo Oriundi no R$, inteiro e centavos; em fundo claro ou amarelo, tom escuro da marca (Bauducco #9E1B14). Nome, DE, risco e validade no tom neutro",
+   "contraste_min_preco": 4.5
+  },
+  "padrao": {
+   "status": "aprovado",
+   "origem": "16/11/2026: Piracanjuba V03, Oral-B V02, Perdigao V02, Bold V02, Caffeine Army V02, Bauducco V03",
+   "corpos": {
+    "inteiro": 428,
+    "centavos": 235,
+    "rs": 109
+   },
+   "regra_vertical": "nome top 170 (2 linhas + linha em branco + DE na 4a linha). Topo dos digitos T = 442.5 (centralizado entre a base do DE +50 e a validade -42). Caixa top = T - 0.293*corpo (R$ 410.6, inteiro 317.1, centavos 373.7)",
+   "regra_horizontal": "tinta do R em eixo+5 (caixa R$ x 880.2 com eixo 880); 40 px entre a tinta do $ e a do inteiro; respiro da virgula = max(0.1*428, 40); posicoes calculadas com ferramentas/barlow_tinta.py (metricas reais da Barlow Condensed, conferidas no Mimmo)",
+   "caixas_w": {
+    "inteiro": 700,
+    "centavos": 420
+   },
+   "exemplos_x": {
+    "1_digito_7": {
+     "inteiro": 1009.6,
+     "centavos": 1215.3
+    },
+    "2_digitos_19": {
+     "inteiro": 1011.3,
+     "centavos": 1332.6
+    },
+    "2_digitos_10": {
+     "inteiro": 1011.3,
+     "centavos": 1341.1
+    },
+    "3_digitos_119": {
+     "inteiro": 1011.3,
+     "centavos": 1445.6,
+     "fim_visivel": 1683
+    }
+   },
+   "risco": {
+    "h": 8,
+    "top": 371,
+    "x": "tinta do R da linha DE - 5",
+    "w": "ate a tinta do ultimo digito + 5"
+   },
+   "validade": {
+    "x": 880,
+    "w": 760,
+    "top": 778,
+    "fim_x": 1640
+   },
+   "excecao_bold": "nome em top 156 e eixo 910 (ajuste do Vitor): T 435.5, R$ x 910.1 top 403.6, inteiro x 1041.2 top 310.1, centavos x 1246.9 top 366.7",
+   "nota": "3 digitos (119,99) cabe com folga de 42 px ate 1725; precos maiores: recalcular e, se passar de 1690, reduzir o corpo"
+  }
  }
 }
