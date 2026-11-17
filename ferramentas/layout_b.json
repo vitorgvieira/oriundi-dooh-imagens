@@ -117,7 +117,7 @@
   "respiro_min_pct_corpo_inteiro": 0.09
  },
  "contraste": {
-  "mediana_min": 7.0,
+  "mediana_min": 7,
   "claros10_min": 4.5
  },
  "preco": {
@@ -358,6 +358,16 @@
     "y": 0
    },
    "nota": "PNG 830x924 com as 2 sombras; embalagens quadradas ~455 px de largura, tras em cima a esquerda girada 5 graus, heroi deslocado 36% para a direita e 70% para baixo para o nome da variante de tras continuar legivel; produto visivel termina em x 724"
+  },
+  "1_pacote_cofril_800g": {
+   "status": "aprovado",
+   "origem": "Cofril Madeira V01 (DAHbK23b4Lo), aprovado em 17/11/2026.",
+   "moldura": {
+    "w": 632.3,
+    "h": 607.6,
+    "x": 128.8,
+    "y": 159.4
+   }
   }
  },
  "sombra_cor_por_fundo": {
@@ -475,7 +485,7 @@
      ],
      "inteiro": [
       1004.2,
-      339.0
+      339
      ],
      "centavos": [
       1469.9,
