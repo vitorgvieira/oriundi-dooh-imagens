@@ -141,8 +141,10 @@ def conceito_d():
     # parede: halo claro atras dos potes, amarelo Sadia no resto
     f = grad_radial(430, 430, 950, (255, 232, 120), AM, 1.1)
     y, x = np.mgrid[0:H, 0:W].astype(float)
-    # piso: horizonte suave em y ~700; amarelo-quente que fecha para ambar nas bordas
-    k = np.clip((y - 690) / 70, 0, 1)
+    # piso: horizonte em curva (palco), y ~690 sob os potes, descendo e saindo pela base antes da
+    # coluna da logo Oriundi (canto inferior direito liso)
+    hz = 690 + 300 * np.clip((x - 700) / 1000, 0, 1) ** 1.6
+    k = np.clip((y - hz) / 70, 0, 1)
     piso = grad_radial(430, 800, 1400, (250, 196, 50), (236, 160, 28), 0.8)
     f = f * (1 - k[..., None]) + piso * k[..., None]
     # traco do S (espessura constante) entrando e saindo pela borda direita, 30-62% da altura
