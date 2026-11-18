@@ -152,7 +152,24 @@ def conceito_d():
     return f
 
 
-CONCEITOS = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c, 'D': conceito_d}
+
+def conceito_e():
+    """E "Palco vermelho em diagonal" (anuncio oficial da Lasanha Sadia, enviado pelo Vitor em 18/11/2026):
+    parede amarela com luz atras dos potes; plano vermelho em perspectiva sob os potes, so na zona do
+    produto, com faixa amarela de primeiro plano na base; traco do S vermelho no meio da borda direita."""
+    f = grad_radial(430, 380, 1000, (255, 226, 96), AM, 1.1)
+    # palco: topo em diagonal (sobe para a direita), lateral direita inclinada antes do texto
+    palco = [(-20, 640), (880, 545), (770, 924), (-20, 924)]
+    verm = grad_radial(380, 700, 900, (222, 40, 46), (180, 24, 30), 1.0)
+    f = compor(f, mascara_poly(palco), verm)
+    # faixa amarela de primeiro plano (borda frontal do palco)
+    frente = [(-20, 858), (790, 858), (770, 924), (-20, 924)]
+    f = compor(f, mascara_poly(frente), np.array(AM, float))
+    f = compor(f, traco([(2240, 255), (2050, 330), (2040, 520), (2240, 610)], 70), VERM)
+    return f
+
+
+CONCEITOS = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c, 'D': conceito_d, 'E': conceito_e}
 
 
 if __name__ == '__main__':
