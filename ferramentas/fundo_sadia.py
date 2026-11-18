@@ -105,6 +105,54 @@ def conceito_b():
     return f
 
 
+
+
+# --- Versao amarela (18/11/2026): o Vitor mostrou que a comunicacao atual ("Seu dia pede Sadia")
+# usa fundo amarelo, com vermelho so na logo e no S. A e B (vermelhos) ficam como testados.
+AM = (249, 206, 39)       # #F9CE27 aprox. das pecas oficiais enviadas
+AM_CLARO = (255, 222, 80)
+AM_QUENTE = (248, 184, 37)  # #F8B825 brilho quente do piso nas pecas oficiais
+
+
+def base_amarela(cx=420, cy=470, r=1500):
+    f = grad_radial(cx, cy, r, AM_CLARO, AM, 1.2)
+    return f
+
+
+def conceito_c():
+    """C "S gigante da embalagem": amarelo com luz atras dos potes e o S oficial vermelho gigante,
+    cortado pelas bordas, como no pote; S inteiro pequeno no meio da borda direita."""
+    f = base_amarela()
+    s = s_oficial()
+    hs = 1160; ws = round(s.width * hs / s.height)
+    tela = Image.new('L', (W, H), 0)
+    tela.paste(s.resize((ws, hs), Image.LANCZOS), (-60, -130))
+    f = compor(f, np.asarray(tela).astype(float) / 255, VERM)
+    hr = 280; sr = s.resize((round(s.width * hr / s.height), hr), Image.LANCZOS)
+    tela2 = Image.new('L', (W, H), 0)
+    tela2.paste(sr, (W - sr.width // 2, 292))
+    f = compor(f, np.asarray(tela2).astype(float) / 255, VERM)
+    return f
+
+
+def conceito_d():
+    """D "Estudio Seu dia pede Sadia": parede amarela, piso amarelo-quente com horizonte suave
+    (como nas pecas oficiais), luz atras dos potes; traco do S vermelho entrando pela borda direita."""
+    # parede: halo claro atras dos potes, amarelo Sadia no resto
+    f = grad_radial(430, 430, 950, (255, 232, 120), AM, 1.1)
+    y, x = np.mgrid[0:H, 0:W].astype(float)
+    # piso: horizonte suave em y ~700; amarelo-quente que fecha para ambar nas bordas
+    k = np.clip((y - 690) / 70, 0, 1)
+    piso = grad_radial(430, 800, 1400, (250, 196, 50), (236, 160, 28), 0.8)
+    f = f * (1 - k[..., None]) + piso * k[..., None]
+    # traco do S (espessura constante) entrando e saindo pela borda direita, 30-62% da altura
+    f = compor(f, traco([(2240, 255), (2050, 330), (2040, 520), (2240, 610)], 70), VERM)
+    return f
+
+
+CONCEITOS = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c, 'D': conceito_d}
+
+
 if __name__ == '__main__':
-    f = {'A': conceito_a, 'B': conceito_b}[sys.argv[1]]()
+    f = CONCEITOS[sys.argv[1]]()
     Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).save(sys.argv[2])
