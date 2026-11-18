@@ -44,19 +44,22 @@ def elipse(cx, cy, rx, ry, ss=3):
     return np.asarray(m.resize((W, H), Image.LANCZOS)).astype(float) / 255
 
 
-def transformar(m, escala, rot, foco_dst):
-    """Escala e gira a mascara do PNG da logo em torno do foco do oval e coloca o foco em foco_dst."""
+def transformar(m, escala, rot, foco_dst, ss=4):
+    """Escala e gira a mascara do PNG da logo em torno do foco do oval e coloca o foco em foco_dst.
+    Desenha em ss x (limiar na escala final x ss) e reduz com LANCZOS: borda lisa, sem serrilhado."""
     im = Image.fromarray((m * 255).astype(np.uint8))
-    w, h = round(im.width * escala), round(im.height * escala)
-    im = im.resize((w, h), Image.BICUBIC).point(lambda v: 255 if v > 127 else 0)
-    im = im.filter(ImageFilter.GaussianBlur(1.1))  # borda lisa: limiar + antisserrilhado
-    fx, fy = FOCO_LOGO[0] * escala, FOCO_LOGO[1] * escala
+    e = escala * ss
+    w, h = round(im.width * e), round(im.height * e)
+    # desfoque proporcional a escala antes do limiar: arredonda a escada de pixels do PNG de 650 px
+    im = im.resize((w, h), Image.BICUBIC).filter(ImageFilter.GaussianBlur(e * 0.9)).point(lambda v: 255 if v > 127 else 0)
+    fx, fy = FOCO_LOGO[0] * e, FOCO_LOGO[1] * e
     pad = int(max(w, h))
     big = Image.new('L', (w + 2 * pad, h + 2 * pad), 0)
     big.paste(im, (pad, pad))
     big = big.rotate(rot, resample=Image.BICUBIC, center=(fx + pad, fy + pad))
-    tela = Image.new('L', (W, H), 0)
-    tela.paste(big, (round(foco_dst[0] - fx - pad), round(foco_dst[1] - fy - pad)))
+    tela = Image.new('L', (W * ss, H * ss), 0)
+    tela.paste(big, (round(foco_dst[0] * ss - fx - pad), round(foco_dst[1] * ss - fy - pad)))
+    tela = tela.resize((W, H), Image.LANCZOS)
     return np.asarray(tela).astype(float) / 255
 
 
@@ -82,9 +85,13 @@ LAR_LUZ = (255, 150, 20) # luz amarelo-alaranjada atras dos pacotes, como na pec
 LAR_TXT = (255, 122, 16) # #FF7A10 luz suave atras do texto (sobe o contraste do texto escuro)
 
 
-def raios_sol(f, fx, fy, esc, rot, cor=AMAR):
+def raios_sol(f, fx, fy, esc, rot, cor=AMAR, brilho=0.0):
     _, raios = mascaras_logo()
-    return compor(f, transformar(raios, esc, rot, (fx, fy)), cor)
+    m = transformar(raios, esc, rot, (fx, fy))
+    if brilho:  # brilho externo amarelo leve: so clareia, integra os raios a luz
+        g = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(28))) / 255
+        f = np.maximum(f, compor(f, g * brilho, (255, 205, 40)))
+    return compor(f, m, cor)
 
 
 def conceito_b(fx=420, fy=640, esc_raio=2.6, rot=22):
@@ -109,7 +116,40 @@ def conceito_c(fx=420, fy=640, esc_raio=2.6, rot=22):
     return f
 
 
+VINHO = (92, 8, 22)      # #5C0816 vinho atras do texto e da coluna da marca
+
+
+def conceito_d(feather=380, cx=1900, rx=1250, ry=1400, fx=420, fy=640, esc_raio=2.6, rot=22):
+    """D "Laranja para vinho, suave" (pedido do Vitor, 18/11/2026): laranja da peca oficial com luz amarela
+    forte atras das embalagens e raios oficiais; passagem em degrade largo para o vinho, numa curva quase
+    vertical (arco do oval) que comeca atras dos pacotes; texto e coluna da marca no vinho uniforme."""
+    f = grad_radial(430, 430, 700, (255, 214, 10), LAR, 0.85)
+    f = raios_sol(f, fx, fy, esc_raio, rot)
+    y, x = np.mgrid[0:H, 0:W].astype(float)
+    xb = cx - rx * np.sqrt(np.clip(1 - ((y - 462) / ry) ** 2, 0, 1))
+    t = np.clip((x - (xb - feather * 0.5)) / feather, 0, 1)
+    t = t * t * (3 - 2 * t)  # smoothstep
+    vinho = grad_radial(1250, 470, 1300, (110, 12, 26), VINHO, 1.0)
+    return f * (1 - t[..., None]) + vinho * t[..., None]
+
+
+
+def raios_sobre_imagem(entrada, fx=420, fy=640, esc_raio=2.6, rot=22):
+    """Fundo gerado pelo Vitor no ChatGPT + raios oficiais da logo por cima (pedido de 18/11/2026).
+    A imagem e levada a 2156x924 (o ChatGPT entrega 1916x821, mesma proporcao)."""
+    im = Image.open(entrada).convert('RGB').resize((W, H), Image.LANCZOS)
+    f = np.asarray(im).astype(float)
+    # luz amarelo-alaranjada atras da borda esquerda do pacote de tras (revisor: o pacote sumia no #FF5301)
+    f = np.maximum(f, grad_radial(150, 430, 330, (255, 170, 30), (0, 0, 0), 1.0) * (1 - np.clip(
+        np.hypot(*np.mgrid[0:H, 0:W][::-1] - np.array([150, 430])[:, None, None]) / 330, 0, 1))[..., None] ** 0.8)
+    return raios_sol(f, fx, fy, esc_raio, rot, brilho=0.45)
+
+
 if __name__ == '__main__':
+    if sys.argv[1] == 'R':  # python fundo_seara.py R entrada.png saida.png
+        f = raios_sobre_imagem(sys.argv[2])
+        Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).save(sys.argv[3])
+        sys.exit()
     args = [float(v) for v in sys.argv[3:]]
-    f = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c}[sys.argv[1]](*args)
+    f = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c, 'D': conceito_d}[sys.argv[1]](*args)
     Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).save(sys.argv[2])
