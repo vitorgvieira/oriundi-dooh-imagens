@@ -172,6 +172,26 @@ def conceito_e():
 CONCEITOS = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c, 'D': conceito_d, 'E': conceito_e}
 
 
+
+
+def conceito_f(sx=-20, sy=-30, hs=980, wordmark=False):
+    """F "S original atras dos potes" (pedido do Vitor, 18/11/2026): amarelo Sadia, S original vetorizado
+    (s_sadia_vetor.py, com o "Sadia" no miolo) gigante atras dos potes; luz amarela suave atras do preco
+    (ajuda o preco vermelho); coluna direita lisa para o Lek Trek."""
+    sys.path.insert(0, 'ferramentas')
+    from s_sadia_vetor import s_original
+    f = grad_radial(430, 430, 1100, (255, 224, 90), AM, 1.2)
+    luz = grad_radial(1200, 560, 520, (255, 226, 92), AM, 1.4)
+    f = np.maximum(f, luz)
+    tela = Image.new('L', (W, H), 0)
+    tela.paste(s_original(hs, wordmark), (sx, sy))  # sem o "Sadia" do miolo: os potes o cortariam
+    f = compor(f, np.asarray(tela).astype(float) / 255, VERM)
+    return f
+
+
+CONCEITOS['F'] = conceito_f
+
+
 if __name__ == '__main__':
     f = CONCEITOS[sys.argv[1]]()
     Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).save(sys.argv[2])
