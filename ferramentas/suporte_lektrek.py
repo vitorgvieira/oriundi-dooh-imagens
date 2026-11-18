@@ -6,8 +6,8 @@ from PIL import Image, ImageDraw
 sys.path.insert(0, 'ferramentas')
 from asset import sombra
 
-X0, Y0, X1, Y1 = 1690, 330, 2156, 924     # caixa do elemento na peca
-BASE_TOP, BASE_X, RAIO = 640, 1740, 70    # base vermelha: topo, borda esquerda, canto arredondado
+X0, Y0, X1, Y1 = 1690, 310, 2156, 924     # caixa do elemento na peca
+BASE_TOP, BASE_X, RAIO = 620, 1740, 70    # base vermelha: topo, borda esquerda, canto arredondado
 VERM = (210, 35, 42, 255)
 LEK_W, LEK_X, LEK_AFUNDA = 430, 1712, 34  # largura do mascote, x na peca, quanto o peito entra atras da base
 
