@@ -77,7 +77,39 @@ def conceito_a(fx=420, fy=640, esc_oval=1.26, esc_raio=2.6, rot=22):
     return f
 
 
+LAR = (255, 83, 1)       # #FF5301 laranja da peca oficial Seara (medido na arte enviada pelo Vitor)
+LAR_LUZ = (255, 150, 20) # luz amarelo-alaranjada atras dos pacotes, como na peca oficial
+LAR_TXT = (255, 122, 16) # #FF7A10 luz suave atras do texto (sobe o contraste do texto escuro)
+
+
+def raios_sol(f, fx, fy, esc, rot, cor=AMAR):
+    _, raios = mascaras_logo()
+    return compor(f, transformar(raios, esc, rot, (fx, fy)), cor)
+
+
+def conceito_b(fx=420, fy=640, esc_raio=2.6, rot=22):
+    """B "Laranja Seara": laranja da peca oficial na tela toda, luz amarelo-alaranjada atras dos pacotes,
+    raios oficiais gigantes; luz suave atras do texto para o texto escuro (nome, preco) ganhar contraste."""
+    # versao escolhida pelo Vitor (18/11/2026): laranja inteiro, preco no amarelo padrao, luz amarela forte
+    # atras das embalagens como na peca oficial Seara, raios oficiais da logo; sem luz atras do texto
+    f = grad_radial(430, 430, 700, (255, 214, 10), LAR, 0.85)
+    f = raios_sol(f, fx, fy, esc_raio, rot)
+    return f
+
+
+def conceito_c(fx=420, fy=640, esc_raio=2.6, rot=22):
+    """C "Laranja com campo vermelho": laranja da peca oficial na zona do produto e nas bordas, com luz e
+    raios oficiais; campo vermelho profundo Seara atras do texto e da coluna da marca, com a borda esquerda
+    no arco do oval da logo; mantem preco amarelo Oriundi e texto branco."""
+    f = grad_radial(420, 470, 760, LAR_LUZ, LAR, 1.1)
+    f = raios_sol(f, fx, fy, esc_raio, rot)
+    verm = grad_radial(1500, 470, 1100, (150, 10, 18), ESC, 1.2)
+    campo = elipse(1720, 462, 920, 700)  # arco do oval: borda esquerda curva entre x ~800 e 860
+    f = compor(f, campo, verm)
+    return f
+
+
 if __name__ == '__main__':
     args = [float(v) for v in sys.argv[3:]]
-    f = {'A': conceito_a}[sys.argv[1]](*args)
+    f = {'A': conceito_a, 'B': conceito_b, 'C': conceito_c}[sys.argv[1]](*args)
     Image.fromarray(np.clip(f, 0, 255).astype(np.uint8)).save(sys.argv[2])
